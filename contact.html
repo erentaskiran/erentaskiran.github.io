@@ -3,42 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Kişisel Portfolyo</title>
+    <title>İletişim | Eren Taşkıran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <header>
-        <h1>İletişim</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
+<body class="dark-mode">
+    <div class="blob-bg"></div>
+    
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">ET.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html">İlgi Alanlarım</a></li>
+                <li><a href="contact.html" class="active">İletişim</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <section>
-            <h2>Bana Ulaşın</h2>
-            <p>Sorularınız veya iş birliği için benimle iletişime geçebilirsiniz.</p>
-            <p><strong>E-posta:</strong> <a href="mailto:eren@example.com">eren@example.com</a></p>
-            
-            <h3>Sosyal Medya</h3>
-            <ul>
-                <li><a href="https://github.com/erentaskiran" target="_blank">GitHub</a></li>
-                <li><a href="https://linkedin.com/in/erentaskiran" target="_blank">LinkedIn</a></li>
-                <li><a href="https://twitter.com/erentaskiran" target="_blank">Twitter / X</a></li>
-            </ul>
+    <main class="container">
+        <section class="page-header">
+            <h1>İletişime Geçin</h1>
+            <p class="hero-subtext">Sorularınız veya iş birliği için buradayım.</p>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-grid">
+                <a href="mailto:eren@example.com" class="contact-card">
+                    <i data-lucide="mail"></i>
+                    <span>eren@example.com</span>
+                </a>
+                <a href="https://github.com/erentaskiran" target="_blank" class="contact-card">
+                    <i data-lucide="github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/erentaskiran" target="_blank" class="contact-card">
+                    <i data-lucide="linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Eren Taşkıran. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Eren Taşkıran. Design by AI.</p>
     </footer>
 
     <script src="scripts/main.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

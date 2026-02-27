@@ -3,55 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Alanlarım - Kişisel Portfolyo</title>
+    <title>İlgi Alanlarım | Eren Taşkıran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <header>
-        <h1>İlgi Alanlarım</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
+<body class="dark-mode">
+    <div class="blob-bg"></div>
+    
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">ET.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <section>
-            <h2>Teknoloji Hobilerim</h2>
-            <ul>
-                <li>Yapay Zeka ve Makine Öğrenmesi</li>
-                <li>Web Arayüz Geliştirme</li>
-                <li>Siber Güvenlik</li>
-            </ul>
-
-            <h2>Günlük Aktivitelerim</h2>
-            <ol>
-                <li>Yeni teknolojiler üzerine makaleler okumak.</li>
-                <li>Küçük projeler üzerinde kod denemeleri yapmak.</li>
-                <li>Spor yapmak ve doğa yürüyüşlerine çıkmak.</li>
-            </ol>
-
-            <h2>Terimler Sözlüğü</h2>
-            <dl>
-                <dt>HTML</dt>
-                <dd>Hiper Metin İşaretleme Dili (Web sayfalarının iskeletini oluşturur).</dd>
-                <dt>CSS</dt>
-                <dd>Basamaklı Stil Şablonları (Web sayfalarının görsel düzenini sağlar).</dd>
-                <dt>JS</dt>
-                <dd>JavaScript (Web sayfalarına etkileşim katar).</dd>
-            </dl>
+    <main class="container">
+        <section class="page-header">
+            <h1>İlgi Alanlarım</h1>
+            <p class="hero-subtext">Teknoloji, hobiler ve diğer tutkularım.</p>
         </section>
+
+        <div class="bento-grid">
+            <div class="bento-item medium">
+                <h3><i data-lucide="cpu"></i> Teknoloji</h3>
+                <ul class="modern-list">
+                    <li>Yapay Zeka</li>
+                    <li>Frontend Mimari</li>
+                    <li>Siber Güvenlik</li>
+                </ul>
+            </div>
+            <div class="bento-item medium">
+                <h3><i data-lucide="coffee"></i> Günlük</h3>
+                <ul class="modern-list">
+                    <li>Teknik Okumalar</li>
+                    <li>Kod Denemeleri</li>
+                    <li>Doğa Yürüyüşleri</li>
+                </ul>
+            </div>
+            <div class="bento-item large">
+                <h3>Terimler Sözlüğü</h3>
+                <div class="dictionary-grid">
+                    <div class="dict-item">
+                        <strong>HTML</strong>
+                        <p>Web'in iskeleti.</p>
+                    </div>
+                    <div class="dict-item">
+                        <strong>CSS</strong>
+                        <p>Web'in ruhu ve stili.</p>
+                    </div>
+                    <div class="dict-item">
+                        <strong>JS</strong>
+                        <p>Web'in beyni.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Eren Taşkıran. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Eren Taşkıran. Design by AI.</p>
     </footer>
 
     <script src="scripts/main.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

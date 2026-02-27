@@ -3,52 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kişisel Portfolyo - Ana Sayfa</title>
+    <title>Eren Taşkıran | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-    <header>
-        <h1>Hoş Geldiniz!</h1>
-        <p>Kişisel Tanıtım ve Mini Portfolyo Sitem</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
+<body class="dark-mode">
+    <div class="blob-bg"></div>
+    
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">ET.</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html">İlgi Alanlarım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <section id="giris">
-            <h2>Merhaba, Ben Eren!</h2>
-            <p>Bu web sitesi, HTML ve CSS becerilerimi sergilemek ve kendimi tanıtmak için oluşturulmuştur.</p>
-            <p>Hızlı bağlantılar:</p>
-            <ul>
-                <li><a href="#ozellikler">Sitenin Özellikleri</a></li>
-                <li><a href="#hedef">Gelecek Hedeflerim</a></li>
-            </ul>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">Bilgisayar Mühendisi Adayı</span>
+                <h1>Merhaba, Ben <span class="highlight">Eren</span></h1>
+                <p class="hero-subtext">Marmara Üniversitesi'nde Bilgisayar Mühendisliği öğrencisiyim. Modern web teknolojileri ve yazılım geliştirme ile ilgileniyorum.</p>
+                <div class="hero-btns">
+                    <a href="about.html" class="btn primary">Beni Tanıyın <i data-lucide="arrow-right"></i></a>
+                    <a href="contact.html" class="btn secondary">İletişime Geçin</a>
+                </div>
+            </div>
         </section>
 
-        <section id="ozellikler">
-            <h3>Sitenin Özellikleri</h3>
-            <p>Bu site tamamen semantik HTML etiketleri kullanılarak inşa edilmiştir.</p>
-        </section>
-
-        <hr>
-
-        <section id="hedef">
-            <h3>Gelecek Hedeflerim</h3>
-            <p>Yazılım dünyasında kendimi geliştirerek modern teknolojilerle projeler üretmek istiyorum.</p>
+        <section class="bento-grid">
+            <div class="bento-item large" id="projects-preview">
+                <h3>Öne Çıkan Projeler</h3>
+                <div class="project-mini-list">
+                    <div class="project-card">
+                        <i data-lucide="code-2"></i>
+                        <span>Buildog</span>
+                    </div>
+                    <div class="project-card">
+                        <i data-lucide="wind"></i>
+                        <span>AirQualityApp</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-item medium">
+                <h3>Yetenekler</h3>
+                <div class="tags">
+                    <span>Java</span>
+                    <span>TypeScript</span>
+                    <span>Python</span>
+                    <span>React</span>
+                </div>
+            </div>
+            <div class="bento-item small">
+                <h3>Konum</h3>
+                <p>İstanbul, TR</p>
+                <i data-lucide="map-pin"></i>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Eren Taşkıran. Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 Eren Taşkıran. Design by AI.</p>
     </footer>
 
     <script src="scripts/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
