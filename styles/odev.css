@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.7;
+}
+
+h1, h2, p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+}
+
+nav {
+    background-color: #2c3e50;
+    padding: 0;
+}
+
+nav .main-menu {
+    list-style: none;
+    text-align: center;
+    padding: 0.6rem 0;
+}
+
+nav .main-menu li {
+    display: inline-block;
+    margin: 0 0.2rem;
+}
+
+nav .main-menu li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.65rem 1.4rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav .main-menu li a:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+.site-header {
+    background-color: #fff;
+    text-align: center;
+    padding: 2.5rem 2rem 2rem;
+    border-bottom: 3px solid #1abc9c;
+}
+
+.site-header h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+}
+
+.site-header p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.content-left {
+    width: 65%;
+    background-color: #fff;
+    border: 1px solid #dce1e6;
+    border-radius: 8px;
+    padding: 2rem;
+    min-height: 300px;
+}
+
+.content-right {
+    width: 35%;
+    background-color: #fff;
+    border: 1px solid #dce1e6;
+    border-radius: 8px;
+    padding: 2rem;
+    min-height: 300px;
+}
+
+.content-left h2,
+.content-right h2 {
+    font-size: 1.35rem;
+    color: #1abc9c;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eef2f5;
+}
+
+.content-left p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.85;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+.content-right p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.site-footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    margin-top: 2rem;
+}
+
+.site-footer p {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    line-height: 1.6;
+}
