@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detaylı İletişim Formu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            background: #f4f6f8;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #1f2937;
+        }
+
+        .contact-container {
+            width: min(90%, 600px);
+            margin: auto;
+            padding: 28px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.65rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px 12px;
+            margin-bottom: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .group-box {
+            margin-bottom: 16px;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f1f5f9;
+        }
+
+        .option-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .option-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-line input {
+            width: auto;
+            margin: 0;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .button-row button {
+            flex: 1;
+            border: none;
+            color: #ffffff;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: #2563eb;
+        }
+
+        .reset-btn {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Detaylı İletişim Formu</h1>
+
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="ad-soyad">Ad Soyad</label>
+            <input type="text" id="ad-soyad" name="ad-soyad" placeholder="Örn: Asaf Karataş" required>
+
+            <label for="eposta">E-posta Adresi</label>
+            <input type="email" id="eposta" name="eposta" placeholder="ornek@mail.com" required>
+
+            <label for="sifre">Başvuru Takip Şifresi</label>
+            <input type="password" id="sifre" name="sifre" placeholder="Şifrenizi girin" required>
+
+            <label>İletişim Tercihi</label>
+            <div class="group-box">
+                <label class="option-line" for="tercih-eposta">
+                    <input type="radio" id="tercih-eposta" name="iletisim-tercihi" value="eposta" required>
+                    Bana e-posta ile ulaşın
+                </label>
+                <label class="option-line" for="tercih-telefon">
+                    <input type="radio" id="tercih-telefon" name="iletisim-tercihi" value="telefon">
+                    Bana telefonla ulaşın
+                </label>
+            </div>
+
+            <label>İlgi Alanları / Yetenekler</label>
+            <div class="group-box">
+                <label class="option-line" for="yetenek-html">
+                    <input type="checkbox" id="yetenek-html" name="yetenekler" value="HTML">
+                    HTML
+                </label>
+                <label class="option-line" for="yetenek-css">
+                    <input type="checkbox" id="yetenek-css" name="yetenekler" value="CSS">
+                    CSS
+                </label>
+                <label class="option-line" for="yetenek-algoritma">
+                    <input type="checkbox" id="yetenek-algoritma" name="yetenekler" value="Algoritma">
+                    Algoritma
+                </label>
+            </div>
+
+            <label for="konu">Konu</label>
+            <select id="konu" name="konu" required>
+                <option value="">Lütfen bir konu seçin...</option>
+                <option value="is-teklifi">İş Teklifi</option>
+                <option value="soru">Soru</option>
+                <option value="geri-bildirim">Geri Bildirim</option>
+            </select>
+
+            <label for="dosya">Özgeçmiş (CV) veya Fotoğraf Yükle</label>
+            <input type="file" id="dosya" name="dosya">
+
+            <label for="mesaj">Mesajınız</label>
+            <textarea id="mesaj" name="mesaj" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..." required></textarea>
+
+            <div class="button-row">
+                <button type="submit" class="submit-btn">Gönder</button>
+                <button type="reset" class="reset-btn">Temizle</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
