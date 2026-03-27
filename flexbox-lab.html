@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temel Flexbox Laboratuvari</title>
+    <style>
+        :root {
+            --bg: #edf0f4;
+            --panel: #ffffff;
+            --line: #d8dee6;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #2563eb;
+            --primary-soft: #dbeafe;
+            --green-soft: #dcfce7;
+            --green: #16a34a;
+            --orange-soft: #ffedd5;
+            --orange: #ea580c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.35;
+        }
+
+        .wrapper {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            margin: 0 0.4vw;
+            padding: 0.8vh 1vw;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .navbar {
+            height: 10vh;
+        }
+
+        .navbar-main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1vw;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: clamp(0.72rem, 1vw, 0.95rem);
+            font-weight: 600;
+        }
+
+        .hero {
+            height: 30vh;
+        }
+
+        .hero-main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 1vw;
+            padding-top: 0.7vh;
+        }
+
+        .hero-text,
+        .hero-visual {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fbfdff;
+        }
+
+        .hero-text {
+            flex: 1 1 60%;
+            padding: 1.2vh 1vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.8vh;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+        }
+
+        .line {
+            height: 0.5rem;
+            border-radius: 999px;
+            background: #e5e7eb;
+        }
+
+        .w-90 { width: 90%; }
+        .w-75 { width: 75%; }
+        .w-60 { width: 60%; }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 0.45rem 0.85rem;
+            font-weight: 700;
+            font-size: 0.78rem;
+            width: fit-content;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .hero-visual {
+            flex: 1 1 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--muted);
+        }
+
+        .cards {
+            height: 30vh;
+        }
+
+        .cards-main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9vh;
+            padding-top: 0.7vh;
+        }
+
+        .card {
+            flex: 1 1 calc((100% - 2vw) / 3);
+            min-width: 170px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fbfdff;
+            padding: 0.85vh 0.8vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.55vh;
+        }
+
+        .card h3 {
+            font-size: 0.8rem;
+        }
+
+        .card .btn {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .grow {
+            height: 20vh;
+        }
+
+        .grow-main {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            align-items: stretch;
+            gap: 0.8vw;
+            padding-top: 0.7vh;
+        }
+
+        .grow-item {
+            flex-basis: 0;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 0.9vh 0.9vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .grow-item h4 {
+            font-size: 0.85rem;
+        }
+
+        .grow-1 {
+            flex-grow: 1;
+            background: var(--primary-soft);
+        }
+
+        .grow-1 .btn {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .grow-2 {
+            flex-grow: 2;
+            background: var(--green-soft);
+        }
+
+        .grow-2 .btn {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+        .grow-3 {
+            flex-grow: 1;
+            background: var(--orange-soft);
+        }
+
+        .grow-3 .btn {
+            background: var(--orange);
+            color: #ffffff;
+        }
+
+        .footer {
+            height: 10vh;
+        }
+
+        .footer-main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .hero-main {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 0.7rem;
+            }
+
+            .card {
+                flex: 1 1 calc(50% - 0.45vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="panel navbar">
+            <div class="navbar-main">
+                <div class="logo">LOGO</div>
+                <ul class="nav-links">
+                    <li><a href="#">Ana Sayfa</a></li>
+                    <li><a href="#">Hakkinda</a></li>
+                    <li><a href="#">Dersler</a></li>
+                    <li><a href="#">Iletisim</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="panel hero">
+            <div class="hero-main">
+                <div class="hero-text">
+                    <h1>Hero Baslik</h1>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <div class="line w-60"></div>
+                    <button class="btn btn-primary" type="button">Buton</button>
+                </div>
+                <div class="hero-visual" aria-label="Gorsel placeholder">
+                    <svg width="130" height="90" viewBox="0 0 130 90" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Daire ve ucgen gorsel">
+                        <rect x="1" y="1" width="128" height="88" rx="10" stroke="#9CA3AF" stroke-width="2"/>
+                        <circle cx="38" cy="33" r="14" fill="#BFDBFE" stroke="#3B82F6" stroke-width="2"/>
+                        <path d="M32 72L62 46L98 72H32Z" fill="#E5E7EB" stroke="#6B7280" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel cards">
+            <div class="cards-main">
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+                <article class="card">
+                    <h3>Kart Basligi</h3>
+                    <div class="line w-90"></div>
+                    <div class="line w-75"></div>
+                    <button class="btn" type="button">Buton</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel grow">
+            <div class="grow-main">
+                <article class="grow-item grow-1">
+                    <h4>1 Kutu</h4>
+                    <button class="btn" type="button">Mavi Buton</button>
+                </article>
+                <article class="grow-item grow-2">
+                    <h4>2 Kutu</h4>
+                    <button class="btn" type="button">Yesil Buton</button>
+                </article>
+                <article class="grow-item grow-3">
+                    <h4>3 Kutu</h4>
+                    <button class="btn" type="button">Turuncu Buton</button>
+                </article>
+            </div>
+        </section>
+
+        <footer class="panel footer">
+            <div class="footer-main">&copy; 2026 - Temel Flexbox Ornegi</div>
+        </footer>
+    </div>
+</body>
+</html>
