@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB: CSS Position Duyuru Karti</title>
+    <style>
+        :root {
+            --bg: #eef2ff;
+            --panel: #f8f8ff;
+            --text: #171717;
+            --muted: #4b5563;
+            --primary: #2f5cff;
+            --secondary: #7c3aed;
+            --mint: #dfffea;
+            --cream: #fff0b5;
+            --rose: #ffe4df;
+            --line: rgba(89, 99, 180, 0.12);
+            --shadow: 0 30px 60px rgba(103, 80, 164, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Inter", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(47, 92, 255, 0.12), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.16), transparent 35%),
+                #f4f5fb;
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        .top-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            padding: 1rem 1.25rem;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 18px 30px rgba(47, 92, 255, 0.22);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+        }
+
+        .top-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 36px rgba(47, 92, 255, 0.28);
+        }
+
+        .header {
+            margin: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .header p {
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-size: 1.02rem;
+        }
+
+        .stage {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding: 3rem 0 5rem;
+        }
+
+        .announcement-card {
+            position: relative;
+            width: min(100%, 760px);
+            min-height: 520px;
+            padding: 5.5rem 3rem 3rem;
+            border: 1px solid var(--line);
+            border-radius: 36px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(217, 230, 255, 0.95), rgba(236, 214, 255, 0.92));
+            box-shadow: var(--shadow);
+        }
+
+        .announcement-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), transparent 25%, rgba(255, 255, 255, 0.14) 50%, transparent 75%, rgba(255, 255, 255, 0.12));
+            pointer-events: none;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            max-width: 380px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 1rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+            color: #2940a3;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.05;
+        }
+
+        .description {
+            margin-top: 1.6rem;
+            color: #263041;
+            font-size: 1.28rem;
+            line-height: 1.7;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.9rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 1.15rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+            cursor: pointer;
+        }
+
+        .action-chip.primary {
+            background: #ffffff;
+            color: #222;
+        }
+
+        .action-chip.secondary {
+            background: rgba(255, 255, 255, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            color: #25324b;
+        }
+
+        .action-chip:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .action-chip:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .tag {
+            position: absolute;
+            z-index: 3;
+            padding: 0.95rem 1.1rem;
+            border-radius: 18px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            box-shadow: 0 16px 28px rgba(112, 124, 191, 0.16);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            transform: translateY(-4px) rotate(-2deg);
+            box-shadow: 0 24px 34px rgba(112, 124, 191, 0.22);
+        }
+
+        .tag-free {
+            top: 2.4rem;
+            left: 1.4rem;
+            background: var(--cream);
+        }
+
+        .tag-date {
+            top: 2.4rem;
+            right: 1.4rem;
+            background: var(--mint);
+        }
+
+        .tag-deadline {
+            right: 1.5rem;
+            bottom: 1.6rem;
+            background: var(--rose);
+        }
+
+        .orb-back {
+            position: absolute;
+            right: 3.3rem;
+            bottom: 8.1rem;
+            width: 180px;
+            height: 250px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.28);
+            z-index: 1;
+        }
+
+        .location-box {
+            position: absolute;
+            right: 6rem;
+            bottom: 9.4rem;
+            z-index: 4;
+            padding: 1.5rem 1.35rem;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 20px 30px rgba(126, 95, 170, 0.15);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .location-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .helper-menu {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 20;
+            padding: 1.1rem 1.25rem;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #6d28d9, #7c3aed);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 20px 38px rgba(109, 40, 217, 0.28);
+            animation: floatMenu 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .helper-menu:hover {
+            filter: brightness(1.05);
+        }
+
+        .footer {
+            margin-top: 1rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        @keyframes floatMenu {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 820px) {
+            .announcement-card {
+                min-height: 620px;
+                padding: 6.5rem 1.4rem 8rem;
+            }
+
+            .card-content {
+                max-width: none;
+            }
+
+            .description {
+                font-size: 1.05rem;
+            }
+
+            .orb-back {
+                right: 1rem;
+                bottom: 8rem;
+                width: 150px;
+                height: 210px;
+            }
+
+            .location-box {
+                left: 1.4rem;
+                right: 1.4rem;
+                bottom: 6.2rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .page {
+                padding-inline: 1rem;
+            }
+
+            .header {
+                margin-top: 3rem;
+            }
+
+            .announcement-card {
+                min-height: 660px;
+            }
+
+            .tag {
+                font-size: 0.95rem;
+                padding: 0.85rem 0.95rem;
+            }
+
+            .tag-free {
+                left: 1rem;
+                top: 1.2rem;
+            }
+
+            .tag-date {
+                top: 1.2rem;
+                right: 1rem;
+            }
+
+            .tag-deadline {
+                right: 1rem;
+                bottom: 1rem;
+            }
+
+            .helper-menu {
+                right: 1rem;
+                bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <div class="page">
+        <a class="top-link" href="index.html">Ana Sayfaya Don</a>
+
+        <header class="header">
+            <h2>LAB: CSS Position ile Etkilesimli Duyuru Karti</h2>
+            <p>Tek bir tanitim karti icinde relative, absolute, fixed, z-index ve etkilesim mantigi birlikte kullanildi.</p>
+        </header>
+
+        <main class="stage">
+            <section class="announcement-card" id="details">
+                <div class="tag tag-free">Ucretsiz</div>
+                <div class="tag tag-date">24 Nisan</div>
+                <div class="tag tag-deadline">Son Kayit</div>
+                <div class="orb-back" aria-hidden="true"></div>
+                <div class="location-box">Konum: Konferans Salonu</div>
+
+                <div class="card-content">
+                    <span class="eyebrow">Marmara Kampus Etkinligi</span>
+                    <h1>Teknoloji Toplulugu Etkinligi</h1>
+                    <p class="description">
+                        Bu duyuru karti; ogrenci toplulugu bulusmasini, konusma saatini ve kampus ici katilim alanlarini tek bir arayuzde toplar.
+                        Amac, position kullanimini temiz ve okunabilir bir tasarim ile gostermektir.
+                    </p>
+
+                    <div class="actions">
+                        <a class="action-chip primary" href="#details">Programi Incele</a>
+                        <a class="action-chip secondary" href="#footer">Bilgi Al</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer" id="footer">2026 - LAB Position Ornek Calismasi</footer>
+    </div>
+
+    <a class="helper-menu" href="#top">Yardimci Menu</a>
+</body>
+</html>
