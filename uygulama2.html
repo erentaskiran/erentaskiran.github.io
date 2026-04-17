@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birim Dönüştürücü</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; padding: 40px; background: #fff; }
+        h1 { font-size: 1.8rem; margin-bottom: 20px; }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 340px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .card h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        label { display: block; margin-bottom: 6px; font-size: 0.95rem; }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #0056b3; }
+        .result-box {
+            margin-top: 16px;
+            background: #e8f5e9;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Birim Dönüştürücü</h1>
+
+    <div class="card">
+        <h2>Birim Dönüştürücü</h2>
+        <label>Değer Giriniz:</label>
+        <input type="text" id="value" placeholder="Değer" />
+        <label>Dönüşüm Tipi:</label>
+        <select id="type">
+            <option value="metre-kilometre">Metre -> Kilometre</option>
+            <option value="celsius-fahrenheit">Celsius -> Fahrenheit</option>
+            <option value="kilogram-gram">Kilogram -> Gram</option>
+        </select>
+        <button onclick="convert()">Hesapla</button>
+        <div class="result-box" id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const val = parseFloat(document.getElementById('value').value);
+            const type = document.getElementById('type').value;
+            const resultBox = document.getElementById('result');
+
+            if (isNaN(val)) {
+                alert('Lütfen geçerli bir değer girin.');
+                return;
+            }
+
+            let result;
+            if (type === 'metre-kilometre') {
+                result = (val / 1000).toLocaleString('tr-TR', { maximumFractionDigits: 5 });
+                resultBox.textContent = 'Sonuç: ' + result + ' km';
+            } else if (type === 'celsius-fahrenheit') {
+                result = (val * 9 / 5 + 32).toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+                resultBox.textContent = 'Sonuç: ' + result + ' °F';
+            } else if (type === 'kilogram-gram') {
+                result = (val * 1000).toLocaleString('tr-TR');
+                resultBox.textContent = 'Sonuç: ' + result + ' g';
+            }
+
+            resultBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

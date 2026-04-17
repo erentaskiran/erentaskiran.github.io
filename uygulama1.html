@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Not Hesaplama</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; padding: 40px; background: #fff; }
+        h1 { font-size: 1.8rem; margin-bottom: 20px; }
+        form { display: flex; flex-direction: column; gap: 10px; max-width: 600px; }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        button {
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover { background: #f0f0f0; }
+        #result {
+            margin-top: 20px;
+            max-width: 600px;
+            background: #f5f5f5;
+            padding: 20px;
+            display: none;
+        }
+        #result .name { font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Öğrenci Not Hesaplama</h1>
+    <form id="gradeForm">
+        <input type="text" id="name" placeholder="Ad Soyad" />
+        <input type="text" id="vize" placeholder="Vize Notu" />
+        <input type="text" id="final" placeholder="Final Notu" />
+        <button type="submit">Hesapla</button>
+    </form>
+
+    <div id="result">
+        <p class="name" id="resName"></p>
+        <p id="resOrtalama"></p>
+        <p id="resHarf"></p>
+        <p id="resDurum"></p>
+    </div>
+
+    <script>
+        function getHarf(ort) {
+            if (ort >= 90) return 'AA';
+            if (ort >= 85) return 'BA';
+            if (ort >= 80) return 'BB';
+            if (ort >= 75) return 'CB';
+            if (ort >= 70) return 'CB';
+            if (ort >= 65) return 'CC';
+            if (ort >= 60) return 'CB';
+            if (ort >= 55) return 'DC';
+            if (ort >= 50) return 'DD';
+            if (ort >= 45) return 'FD';
+            return 'FF';
+        }
+
+        document.getElementById('gradeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const vize = parseFloat(document.getElementById('vize').value);
+            const final = parseFloat(document.getElementById('final').value);
+
+            if (!name || isNaN(vize) || isNaN(final)) {
+                alert('Lütfen tüm alanları doldurun.');
+                return;
+            }
+
+            const ortalama = vize * 0.4 + final * 0.6;
+            const harf = getHarf(ortalama);
+            const durum = ortalama >= 50 ? 'Geçti' : 'Kaldı';
+
+            document.getElementById('resName').textContent = name;
+            document.getElementById('resOrtalama').textContent = 'Ortalama: ' + ortalama.toFixed(2);
+            document.getElementById('resHarf').textContent = 'Harf Notu: ' + harf;
+            document.getElementById('resDurum').textContent = 'Durum: ' + durum;
+
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
