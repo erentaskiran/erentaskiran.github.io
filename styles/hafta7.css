@@ -1,0 +1,80 @@
+:root {
+    --bg-main: #f3f5f9;
+    --bg-surface: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --nav-bg: #111827;
+    --nav-text: #f9fafb;
+    --hero-bg: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ecfeff 100%);
+}
+
+[data-theme="dark"] {
+    --bg-main: #0b1220;
+    --bg-surface: #111a2e;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --nav-bg: #020617;
+    --nav-text: #e2e8f0;
+    --hero-bg: linear-gradient(135deg, #172554 0%, #0f172a 55%, #083344 100%);
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#topNav {
+    background-color: var(--nav-bg);
+}
+
+#topNav .navbar-brand,
+#topNav .nav-link {
+    color: var(--nav-text);
+}
+
+#topNav .nav-link:hover,
+#topNav .nav-link:focus {
+    color: #93c5fd;
+}
+
+.hero-wrap {
+    background: var(--hero-bg);
+}
+
+.card,
+.list-group-item,
+.alert,
+footer {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+}
+
+.text-secondary,
+.form-label,
+.form-check-label,
+footer a,
+footer span {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #0b1324;
+    border-color: #334155;
+    color: #e5e7eb;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+    color: #e2e8f0;
+    border-color: #64748b;
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+    color: #0b1220;
+    background-color: #cbd5e1;
+}
